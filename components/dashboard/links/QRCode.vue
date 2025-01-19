@@ -5,11 +5,7 @@ const props = defineProps({
   data: {
     type: String,
     required: true,
-  },
-  image: {
-    type: String,
-    default: '',
-  },
+  }
 })
 const options = {
   width: 256,
@@ -17,10 +13,8 @@ const options = {
   data: props.data,
   margin: 10,
   qrOptions: { typeNumber: '0', mode: 'Byte', errorCorrectionLevel: 'Q' },
-  imageOptions: { hideBackgroundDots: true, imageSize: 0.4, margin: 2 },
   dotsOptions: { type: 'dots', color: '#000000', gradient: null },
   backgroundOptions: { color: '#ffffff', gradient: null },
-  image: props.image,
   dotsOptionsHelper: {
     colorType: { single: true, gradient: false },
     gradient: {
