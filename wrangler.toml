@@ -1,4 +1,6 @@
 upload_source_maps = true
+compatibility_flags = ["nodejs_compat"]
+node_compat = true
 
 [dev]
 port = 3000
