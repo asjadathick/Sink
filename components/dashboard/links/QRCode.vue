@@ -5,7 +5,7 @@ const props = defineProps({
   data: {
     type: String,
     required: true,
-  }
+  },
 })
 const options = {
   width: 256,

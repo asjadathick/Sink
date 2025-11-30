@@ -1,5 +1,4 @@
 import type { H3Event } from 'h3'
-import { getFlag } from '@/utils/flag'
 import { parseAcceptLanguage } from 'intl-parse-accept-language'
 import { UAParser } from 'ua-parser-js'
 import {
@@ -9,10 +8,11 @@ import {
   ExtraDevices,
   Fetchers,
   InApps,
+  Libraries,
   MediaPlayers,
-  Modules,
 } from 'ua-parser-js/extensions'
 import { parseURL } from 'ufo'
+import { getFlag } from '@/utils/flag'
 
 function toBlobNumber(blob: string) {
   return +blob.replace(/\D/g, '')
@@ -69,7 +69,9 @@ export function useAccessLog(event: H3Event) {
 
   const userAgent = getHeader(event, 'user-agent') || ''
   const uaInfo = (new UAParser(userAgent, {
-    browser: [Crawlers.browser || [], CLIs.browser || [], Emails.browser || [], Fetchers.browser || [], InApps.browser || [], MediaPlayers.browser || [], Modules.browser || []].flat(),
+    // @ts-expect-error: ua-parser-js types are mismatching with v2 implementation
+    browser: [CLIs.browser || [], Crawlers.browser || [], Emails.browser || [], Fetchers.browser || [], InApps.browser || [], Libraries.browser || [], MediaPlayers.browser || []].flat(),
+    // @ts-expect-error: ua-parser-js types are mismatching with v2 implementation
     device: [ExtraDevices.device || []].flat(),
   })).getResult()
 
