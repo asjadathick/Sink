@@ -47,13 +47,6 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-07-08',
 
-  nitro: {
-    experimental: {
-      // Enable Server API documentation within NuxtHub
-      openAPI: true,
-    },
-  },
-
   hub: {
     ai: true,
     analytics: true,
